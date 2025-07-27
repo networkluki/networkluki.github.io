@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Ubuntu';
-  src: url('ubuntu/Ubuntu-R.ttf') format('truetype');
+  src: url('../ubuntu/Ubuntu-R.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -22,6 +22,6 @@ h1 {
   
 body { 
   color: #fff;
-  font-family: sans-serif; 
+  font-family: 'Ubuntu', sans-serif; 
   background-color: #000;
 }
