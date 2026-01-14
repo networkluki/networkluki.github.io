@@ -35,13 +35,6 @@
       <p class="tagline">
         Systems, automation, game-server engineering, security-minded development.
       </p>
-
-      <div class="quicklinks" aria-label="Quick links">
-        <a href="#projects">Projects</a>
-        <a href="#experiments">Current Experiments</a>
-        <a href="#notes">Notes</a>
-        <a href="#contact">Contact</a>
-      </div>
     </header>
 
     <main>
@@ -62,110 +55,6 @@
           </p>
         </details>
       </section>
-
-      <section id="projects">
-        <h2>Projects</h2>
-        <p class="muted">
-          Selected work. I prefer small tools that are easy to audit, deploy, and maintain.
-        </p>
-
-        <ul class="projects">
-          <li>
-            <strong>SmeltAndCookSpeed</strong> — configurable furnace tick control for Rust servers
-            <div class="meta">
-              <span class="pill">C#</span><span class="pill">uMod/Oxide</span><span class="pill">Performance</span>
-            </div>
-          </li>
-          <li>
-            <strong>SmartWipe</strong> — scheduled wipe automation with safety controls
-            <div class="meta">
-              <span class="pill">C#</span><span class="pill">Automation</span><span class="pill">Ops</span>
-            </div>
-          </li>
-          <li>
-            <strong>Server Tooling</strong> — small scripts for backups, deploys, and hardening
-            <div class="meta">
-              <span class="pill">Bash</span><span class="pill">Linux</span><span class="pill">Infra</span>
-            </div>
-          </li>
-        </ul>
-
-        <details>
-          <summary>What I optimize for</summary>
-          <ul>
-            <li>Reproducibility: clear steps, minimal surprises</li>
-            <li>Observability: logs and measurable behavior</li>
-            <li>Safety: secure defaults and least privilege</li>
-          </ul>
-        </details>
-      </section>
-
-      <section id="experiments">
-        <h2>Current Experiments</h2>
-
-        <article class="card">
-          <h3>Server Tick Manipulation</h3>
-          <p>
-            Testing per-entity tick scaling instead of global multipliers to reduce desync
-            in mod-heavy Rust servers.
-          </p>
-          <details>
-            <summary>Working theory</summary>
-            <p>
-              Global multipliers increase mutation frequency everywhere, which can amplify shared-state issues.
-              Per-entity scaling may contain side effects and simplify debugging.
-            </p>
-          </details>
-        </article>
-
-        <article class="card">
-          <h3>Config vs Code Complexity</h3>
-          <p>
-            Measuring how JSON-driven systems affect long-term maintenance compared to hardcoded logic.
-          </p>
-          <details>
-            <summary>What I track</summary>
-            <ul>
-              <li>Number of “special cases” added over time</li>
-              <li>Time-to-change for a feature request</li>
-              <li>How often configs become “footguns”</li>
-            </ul>
-          </details>
-        </article>
-      </section>
-
-      <section id="notes">
-        <h2>Notes</h2>
-
-        <article class="quote">
-          <h3>Mini thought experiment</h3>
-          <p>
-            Most “performance plugins” optimize symptoms, not causes.
-            My approach is to trace state mutation frequency before touching multipliers.
-          </p>
-        </article>
-
-        <article class="quote">
-          <h3>Failure log</h3>
-          <p>
-            Increasing furnace tick rate can cause desync when inventory state is shared or updated too frequently.
-            Mitigation: isolate per-entity timers and validate side effects with measurable counters.
-          </p>
-          <p class="muted">
-            (If you publish real failure logs later: keep them short and factual—no excuses, no drama.)
-          </p>
-        </article>
-
-        <details>
-          <summary>Security stance (short version)</summary>
-          <ul>
-            <li>Prefer static sites when possible (lower attack surface)</li>
-            <li>No secrets in repos (ever)</li>
-            <li>Least privilege for services and plugins</li>
-            <li>Measure before changing performance-critical behavior</li>
-          </ul>
-        </details>
-      </section>
     </main>
 
     <footer id="contact">
@@ -176,7 +65,7 @@
       </p>
 
       <p class="muted small">
-        This site is intentionally minimal: fast, auditable, and easy to maintain.
+        
       </p>
     </footer>
   </div>
