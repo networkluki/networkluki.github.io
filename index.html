@@ -32,6 +32,7 @@
   <div class="container">
     <header class="hero">
       <h1>Luki Hackwell, networkluki</h1>
+      <p>Sweden, <span id="years-left"></span>/<span id="age"></span></p>
       <p class="tagline">
         Systems, automation, game-server engineering, security-minded development.
       </p>
@@ -69,5 +70,40 @@
       </p>
     </footer>
   </div>
+<script>
+"use strict";
+
+function calculateAge(birthDateISO) {
+    const today = new Date();
+    const birthDate = new Date(birthDateISO);
+
+    if (Number.isNaN(birthDate.getTime())) { throw new Error("Invalid birth date format"); }
+
+    let age = today.getFullYear() - birthDate.getFullYear();
+
+    const birthdayThisYear = new Date(
+        today.getFullYear(),
+        birthDate.getMonth(),
+        birthDate.getDate()
+    );
+
+    if (today < birthdayThisYear) { age--; }
+
+    return age;
+}
+
+function calculateYearsLeft(currentAge, maxAge = 100) { return Math.max(0, maxAge - currentAge); }
+
+window.addEventListener("DOMContentLoaded", () => {
+    const birthDate = "1997-02-13";
+    const maxAge = 100;
+
+    const age = calculateAge(birthDate);
+    const yearsLeft = calculateYearsLeft(age, maxAge);
+
+    document.getElementById("age").textContent = String(age);
+    document.getElementById("years-left").textContent = String(yearsLeft);
+});
+</script>
 </body>
 </html>
