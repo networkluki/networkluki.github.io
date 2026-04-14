@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="robots" content="index, follow">
@@ -19,7 +19,7 @@
 <link rel="apple-touch-icon" sizes="144x144" href="/assets/imgs/icons/apple-icon-144x144.png">
 <link rel="apple-touch-icon" sizes="152x152" href="/assets/imgs/icons/apple-icon-152x152.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/imgs/icons/apple-icon-180x180.png">
-<link rel="icon" type="image/png" sizes="192x192"  href="/assets/imgs/icons/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/imgs/icons/android-icon-192x192.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/imgs/icons/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="96x96" href="/assets/imgs/icons/favicon-96x96.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/imgs/icons/favicon-16x16.png">
@@ -34,49 +34,51 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/custom.css">
 </head>
 <body>
-  <div class="container">
-    <header class="hero">
-      <h1>NETWORKLUKI</h1>
-      <ul style="list-style-type: none;">
-        <li>Name: Luki Hackwell</li>
-        <li>Alias: networkluki</li>
-        <li>Based in: Sweden</li>
-        <li>Age: <span id="age"></span> y/o</li>
-        <li>Years left: <span id="years-left"></span></li>
-      </ul>
-      <p class="tagline">
-        Self-taught developer with experience in DevOps, software, systems, and security.
-      </p>
-    </header>
+  <main class="page">
+    <div class="container">
+      <header class="hero">
+        <h1>NETWORKLUKI</h1>
+        <ul class="plain-list">
+          <li>Name: Luki Hackwell</li>
+          <li>Alias: networkluki</li>
+          <li>Based in: Sweden</li>
+          <li>Age: <span id="age"></span> y/o</li>
+          <li>Years left: <span id="years-left"></span></li>
+        </ul>
+        <p class="tagline">
+          Self-taught developer with experience in DevOps, software, systems, and security.
+        </p>
+      </header>
 
-    <main>
       <section id="focus">
-<h2>Focus</h2>
-<ul style="list-style-type: upper-alpha;">
-  <li>Game server plugins and systems (uMod / Oxide, FiveM)</li>
-  <li>Linux servers, shell automation, and infrastructure</li>
-  <li>Configuration-driven system design</li>
-  <li>Secure and security-aware development</li>
-</ul>
+        <h2>Focus</h2>
+        <ul class="alpha-list">
+          <li>Game server plugins and systems (uMod / Oxide, FiveM)</li>
+          <li>Linux servers, shell automation, and infrastructure</li>
+          <li>Configuration-driven system design</li>
+          <li>Secure and security-aware development</li>
+        </ul>
+
         <details>
           <summary>Interested</summary>
-          <p>
-            Information Security, Cryptography, IT-Security, Code
-          </p>
+          <p>Information Security, Cryptography, IT-Security, Code</p>
         </details>
+
         <details>
           <summary>Projects</summary>
-          <ul style="list-style-type: none;">
+          <ul class="plain-list">
             <li><a href="https://theinfo.nu/projects/">My projects</a></li>
             <li><a href="https://theinfo.nu/">The Info Network</a></li>
           </ul>
         </details>
       </section>
-    </main>
+    </div>
+  </main>
 
-    <footer id="contact">
+  <footer id="contact" class="site-footer">
+    <div class="container">
       <h2>Contact</h2>
-      <span>Mail: dev.networkluki@gmail.com</span>
+      <p>Mail: <a href="mailto:dev.networkluki@gmail.com">dev.networkluki@gmail.com</a></p>
       <p>
         Steam: <a href="https://networkluki.com/steam/">My steam</a><br>
         GitHub: <a href="https://github.com/NetworkLuki" rel="me">github.com/NetworkLuki</a><br>
@@ -84,11 +86,10 @@
         Discord: <span class="mono">https://discord.gg/uWMqsADdWJ</span>
       </p>
 
-      <p class="muted small">
-        
-      </p>
-    </footer>
-  </div>
+      <p class="muted small"></p>
+    </div>
+  </footer>
+
 <script>
 "use strict";
 
