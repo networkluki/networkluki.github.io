@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="robots" content="index, follow">
 <meta name="author" content="Luki Hackwell">
@@ -44,9 +45,22 @@
 <link rel="stylesheet" href="/assets/css/custom.css">
 
 </head>
+
 <body>
-<div class="container">
-        <h3>\\:NETWORKLUKI:~$</h3>
+  <canvas id="space-canvas" aria-hidden="true"></canvas>
+  <div class="space-vignette" aria-hidden="true"></div>
+  <div class="space-nebula" aria-hidden="true"></div>
+
+  <main class="page">
+    <div class="container">
+      <header class="hero">
+        <div class="space-badge">
+          <i class="fa-brands fa-ubuntu" aria-hidden="true"></i>
+          <span>Ubuntu space mode</span>
+        </div>
+
+        <h1>\\:NETWORKLUKI:~$</h1>
+
         <p>Citat: "All of life is like an academic education." - Luki Hackwell</p>
 
         <ul class="profile-list">
@@ -69,8 +83,76 @@
         <p class="tagline">
           Self-taught developer with experience in DevOps, software, systems, and security.
         </p>
-</div>
-        
+      </header>
+
+      <section id="focus" aria-labelledby="focus-title">
+        <h2 id="focus-title">Focus</h2>
+
+        <ul class="focus-list">
+          <li>Game server plugins and systems (uMod / Oxide, FiveM)</li>
+          <li>Linux servers, shell automation, and infrastructure</li>
+          <li>Configuration-driven system design</li>
+          <li>Secure and security-aware development</li>
+        </ul>
+
+        <details>
+          <summary>Interested</summary>
+          <p>Information Security, Cryptography, IT-Security, Code</p>
+        </details>
+
+        <details open>
+          <summary>Mission links</summary>
+          <ul class="link-grid">
+            <li>
+              <a class="space-link" href="https://theinfo.nu/projects/" target="_blank" rel="noopener noreferrer">
+                <i class="fa-solid fa-diagram-project" aria-hidden="true"></i>
+                <span>My projects</span>
+              </a>
+            </li>
+            <li>
+              <a class="space-link" href="https://theinfo.nu/" target="_blank" rel="noopener noreferrer">
+                <i class="fa-solid fa-satellite-dish" aria-hidden="true"></i>
+                <span>The Info Network</span>
+              </a>
+            </li>
+          </ul>
+        </details>
+
+        <details>
+          <summary>What we do</summary>
+          <p>
+            We build and analyze systems with a focus on Linux, secure development, automation, and integrity tools. Our projects range from server hardening and log analysis to browser extensions, game server tools, and open source tools for security and operations.
+          </p>
+        </details>
+      </section>
+    </div>
+  </main>
+
+  <footer id="contact" class="site-footer">
+    <div class="container">
+      <h2>Contact</h2>
+
+      <p class="contact-links">
+        <a class="contact-link" href="mailto:dev.networkluki@gmail.com">
+          <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+          <span>Mail</span>
+        </a>
+        <a class="contact-link" href="https://stuffs.lukihackwell.com/steam/" target="_blank" rel="noopener noreferrer">
+          <i class="fa-brands fa-steam" aria-hidden="true"></i>
+          <span>Steam</span>
+        </a>
+        <a class="contact-link" href="https://github.com/NetworkLuki" target="_blank" rel="noopener noreferrer">
+          <i class="fa-brands fa-github" aria-hidden="true"></i>
+          <span>GitHub</span>
+        </a>
+        <a class="contact-link" href="https://x.com/networkluki" target="_blank" rel="noopener noreferrer">
+          <i class="fa-brands fa-x-twitter" aria-hidden="true"></i>
+          <span>Twitter</span>
+        </a>
+      </p>
+    </div>
+  </footer>
+
 <script>
 "use strict";
 
@@ -99,6 +181,193 @@ function calculateAge(birthDateISO) {
 
 function calculateYearsLeft(currentAge, maxAge = 100) {
     return Math.max(0, maxAge - currentAge);
+}
+
+function initSpaceWarp() {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) {
+        return;
+    }
+
+    const canvas = document.getElementById("space-canvas");
+    if (!(canvas instanceof HTMLCanvasElement)) {
+        return;
+    }
+
+    const context = canvas.getContext("2d", { alpha: true });
+    if (!context) {
+        return;
+    }
+
+    const stars = [];
+    const maxPixelRatio = 1.4;
+    const state = {
+        width: 0,
+        height: 0,
+        centerX: 0,
+        centerY: 0,
+        focalLength: 0,
+        speed: 8,
+        targetSpeed: 8,
+        pointerX: 0,
+        pointerY: 0,
+        starCount: 0,
+        animationFrameId: 0,
+        lastFrameTime: 0,
+        isSmallScreen: false
+    };
+
+    function getPixelRatio() {
+        return Math.min(window.devicePixelRatio || 1, maxPixelRatio);
+    }
+
+    function createStar() {
+        return {
+            x: (Math.random() - 0.5) * state.width * 1.7,
+            y: (Math.random() - 0.5) * state.height * 1.7,
+            z: Math.random() * state.width,
+            size: 0.5 + Math.random() * 1.65,
+            tint: Math.random()
+        };
+    }
+
+    function resetStar(star, placeFarAway = false) {
+        star.x = (Math.random() - 0.5) * state.width * 1.8;
+        star.y = (Math.random() - 0.5) * state.height * 1.8;
+        star.z = placeFarAway ? state.width : Math.random() * state.width;
+        star.size = 0.5 + Math.random() * 1.65;
+        star.tint = Math.random();
+    }
+
+    function resizeCanvas() {
+        const pixelRatio = getPixelRatio();
+
+        state.width = window.innerWidth;
+        state.height = window.innerHeight;
+        state.centerX = state.width / 2;
+        state.centerY = state.height / 2;
+        state.isSmallScreen = state.width <= 640;
+        state.focalLength = Math.max(280, state.width * (state.isSmallScreen ? 0.9 : 0.76));
+        state.starCount = state.isSmallScreen
+            ? Math.max(120, Math.floor((state.width + state.height) * 0.16))
+            : Math.max(280, Math.floor((state.width + state.height) * 0.32));
+
+        canvas.width = Math.floor(state.width * pixelRatio);
+        canvas.height = Math.floor(state.height * pixelRatio);
+        canvas.style.width = state.width + "px";
+        canvas.style.height = state.height + "px";
+
+        context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+
+        if (stars.length > state.starCount) {
+            stars.length = state.starCount;
+        }
+
+        while (stars.length < state.starCount) {
+            stars.push(createStar());
+        }
+    }
+
+    function updatePointer(event) {
+        state.pointerX = (event.clientX / state.width - 0.5) * 2;
+        state.pointerY = (event.clientY / state.height - 0.5) * 2;
+        state.targetSpeed = state.isSmallScreen ? 7 : 9 + Math.abs(state.pointerY) * 7;
+    }
+
+    function clearPointer() {
+        state.pointerX = 0;
+        state.pointerY = 0;
+        state.targetSpeed = state.isSmallScreen ? 7 : 9;
+    }
+
+    function draw(timestamp) {
+        if (!state.lastFrameTime) {
+            state.lastFrameTime = timestamp;
+        }
+
+        const delta = Math.min(40, timestamp - state.lastFrameTime);
+        state.lastFrameTime = timestamp;
+        state.speed += (state.targetSpeed - state.speed) * 0.045;
+
+        context.clearRect(0, 0, state.width, state.height);
+
+        const cameraOffsetX = state.pointerX * (state.isSmallScreen ? 28 : 76);
+        const cameraOffsetY = state.pointerY * (state.isSmallScreen ? 20 : 56);
+        const velocity = state.speed * (delta / 16.6667);
+
+        for (const star of stars) {
+            const depthBefore = state.focalLength / Math.max(star.z, 1);
+            const startX = star.x * depthBefore + state.centerX + cameraOffsetX;
+            const startY = star.y * depthBefore + state.centerY + cameraOffsetY;
+
+            star.z -= velocity;
+
+            if (star.z <= 1) {
+                resetStar(star, true);
+                continue;
+            }
+
+            const depthAfter = state.focalLength / star.z;
+            const endX = star.x * depthAfter + state.centerX + cameraOffsetX;
+            const endY = star.y * depthAfter + state.centerY + cameraOffsetY;
+
+            if (endX < -180 || endX > state.width + 180 || endY < -180 || endY > state.height + 180) {
+                resetStar(star, true);
+                continue;
+            }
+
+            const intensity = 1 - Math.min(star.z / state.width, 1);
+            const alpha = 0.22 + intensity * (state.isSmallScreen ? 0.55 : 0.78);
+            const lineWidth = 0.35 + intensity * star.size * (state.isSmallScreen ? 1.35 : 2.1);
+
+            let strokeStyle = "rgba(255,248,244," + alpha.toFixed(3) + ")";
+            if (star.tint < 0.16) {
+                strokeStyle = "rgba(255,138,61," + alpha.toFixed(3) + ")";
+            } else if (star.tint < 0.25) {
+                strokeStyle = "rgba(218,170,255," + alpha.toFixed(3) + ")";
+            }
+
+            context.beginPath();
+            context.moveTo(startX, startY);
+            context.lineTo(endX, endY);
+            context.lineWidth = lineWidth;
+            context.strokeStyle = strokeStyle;
+            context.stroke();
+
+            context.beginPath();
+            context.arc(endX, endY, Math.max(0.45, lineWidth * 0.45), 0, Math.PI * 2);
+            context.fillStyle = strokeStyle;
+            context.fill();
+        }
+
+        state.animationFrameId = window.requestAnimationFrame(draw);
+    }
+
+    resizeCanvas();
+    clearPointer();
+    state.animationFrameId = window.requestAnimationFrame(draw);
+
+    window.addEventListener("resize", resizeCanvas, { passive: true });
+    window.addEventListener("mousemove", updatePointer, { passive: true });
+    window.addEventListener("mouseleave", clearPointer, { passive: true });
+
+    window.addEventListener("touchmove", (event) => {
+        if (event.touches.length > 0) {
+            updatePointer(event.touches[0]);
+        }
+    }, { passive: true });
+
+    window.addEventListener("touchend", clearPointer, { passive: true });
+
+    document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+            window.cancelAnimationFrame(state.animationFrameId);
+            state.animationFrameId = 0;
+            state.lastFrameTime = 0;
+        } else if (!state.animationFrameId) {
+            state.animationFrameId = window.requestAnimationFrame(draw);
+        }
+    });
 }
 
 window.addEventListener("DOMContentLoaded", () => {
