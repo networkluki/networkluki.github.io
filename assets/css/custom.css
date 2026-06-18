@@ -7,3 +7,7 @@ body {
 span.alias{
   text-transform: lowercase;
 }
+
+.workspace{
+  text-align: center;
+}
