@@ -4,7 +4,7 @@ body {
   background-color: #2C001E;
 }
 
-span.alias{}
+span.alias{ letter-spacing: 0.3rem; margin-right: -0.3rem; }
 
 .workspace {
   margin: 0;
