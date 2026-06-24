@@ -4,6 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Version Information</title>
+    <style>
+    body {
+    background: #0d1117;
+    color: #c9d1d9;
+    font-family: monospace;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1, h2 {
+    color: #58a6ff;
+}
+
+.commit {
+    border-left: 3px solid #238636;
+    padding: 10px;
+    margin: 10px 0;
+    background: #161b22;
+}
+
+.date {
+    color: #8b949e;
+    font-size: 0.9em;
+}
+    </style>
 </head>
 <body>
 
@@ -43,7 +69,10 @@
         </section>
 
 <h2>Recent Changes</h2>
-<div id="commits">Loading recent changes...</div>
+<div id="commits" class="commit">
+    Loading recent changes...
+<span class="date">2026-06-24</span>
+</div>
 
 <script>
 const commitsBox = document.getElementById("commits");
