@@ -1,128 +1,142 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Version Information</title>
     <style>
-        body {
-            background: #0d1117;
-            color: #c9d1d9;
-            font-family: monospace;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+      body {
+        background: #0d1117;
+        color: #c9d1d9;
+        font-family: monospace;
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px;
+      }
 
-        h1, h2 {
-            color: #58a6ff;
-        }
+      h1,
+      h2 {
+        color: #58a6ff;
+      }
 
-        a {
-            color: #58a6ff;
-        }
+      a {
+        color: #58a6ff;
+      }
 
-        section {
-            margin-bottom: 30px;
-        }
+      section {
+        margin-bottom: 30px;
+      }
 
-        .commit {
-            border-left: 3px solid #238636;
-            padding: 10px;
-            margin: 10px 0;
-            background: #161b22;
-        }
+      .commit {
+        border-left: 3px solid #238636;
+        padding: 10px;
+        margin: 10px 0;
+        background: #161b22;
+      }
 
-        .date {
-            color: #8b949e;
-            font-size: 0.9em;
-        }
+      .date {
+        color: #8b949e;
+        font-size: 0.9em;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
+    <header>
+      <h1>Version Information</h1>
+      <p>Version history for lukihackwell.com</p>
+    </header>
 
-<header>
-    <h1>Version Information</h1>
-    <p>Version history for lukihackwell.com</p>
-</header>
-
-<main>
-    <section>
+    <main>
+      <section>
         <h2>Current Version</h2>
         <p><strong>Version:</strong> v1.0.0</p>
         <p><strong>Release Date:</strong> 2026-06-24</p>
         <p><strong>Status:</strong> Stable</p>
-    </section>
+      </section>
 
-    <section>
+      <section>
         <h2>Changelog</h2>
         <h3>v1.0.0 - 2026-06-24</h3>
         <ul>
-            <li>Initial website release.</li>
-            <li>Added homepage.</li>
-            <li>Added custom styling.</li>
-            <li>Added version page.</li>
-            <li>Added project identity: networkluki.</li>
+          <li>Initial website release.</li>
+          <li>Added homepage.</li>
+          <li>Added custom styling.</li>
+          <li>Added version page.</li>
+          <li>Added project identity: networkluki.</li>
         </ul>
-    </section>
+      </section>
 
-    <section>
+      <section>
         <h2>Version Rules</h2>
         <ul>
-            <li><strong>Patch:</strong> v1.0.1 - small fixes.</li>
-            <li><strong>Minor:</strong> v1.1.0 - new features.</li>
-            <li><strong>Major:</strong> v2.0.0 - big redesign or breaking changes.</li>
+          <li><strong>Patch:</strong> v1.0.1 - small fixes.</li>
+          <li><strong>Minor:</strong> v1.1.0 - new features.</li>
+          <li>
+            <strong>Major:</strong> v2.0.0 - big redesign or breaking changes.
+          </li>
         </ul>
-    </section>
+      </section>
 
-    <section>
+      <section>
         <h2>Recent Changes</h2>
         <div id="commits">
-            <p>Loading recent changes...</p>
+          <p>Loading recent changes...</p>
         </div>
-    </section>
-</main>
+      </section>
+    </main>
 
-<footer>
-    <p>Maintained by Luki Hackwell</p>
-    <p><a href="/">Back to homepage</a></p>
-</footer>
+    <footer>
+      <p>Maintained by Luki Hackwell</p>
+      <p><a href="/">Back to homepage</a></p>
+    </footer>
 
-<script>
-    const commitsBox = document.getElementById("commits");
+    <script>
+      const commitsBox = document.getElementById("commits");
 
-    fetch("https://api.github.com/repos/networkluki/networkluki.github.io/commits?per_page=10")
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("GitHub API rate limit or request error");
-            }
+      function renderCommit(message, date) {
+        const commit = document.createElement("div");
+        const title = document.createElement("strong");
+        const lineBreak = document.createElement("br");
+        const dateText = document.createElement("span");
 
-            return response.json();
+        commit.className = "commit";
+        dateText.className = "date";
+        title.textContent = message;
+        dateText.textContent = date;
+
+        commit.append(title, lineBreak, dateText);
+        commitsBox.append(commit);
+      }
+
+      fetch(
+        "https://api.github.com/repos/networkluki/networkluki.github.io/commits?per_page=10",
+      )
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("GitHub API rate limit or request error");
+          }
+
+          return response.json();
         })
-        .then(commits => {
-            commitsBox.innerHTML = "";
+        .then((commits) => {
+          commitsBox.replaceChildren();
 
-            commits.forEach(item => {
-                const date = new Date(item.commit.author.date).toLocaleDateString("sv-SE");
-                const message = item.commit.message;
+          commits.forEach((item) => {
+            const date = new Date(item.commit.author.date).toLocaleDateString(
+              "sv-SE",
+            );
+            const message = item.commit.message;
 
-                commitsBox.innerHTML += `
-                    <div class="commit">
-                        <strong>${message}</strong><br>
-                        <span class="date">${date}</span>
-                    </div>
-                `;
-            });
+            renderCommit(message, date);
+          });
         })
         .catch(() => {
-            commitsBox.innerHTML = `
-                <div class="commit">
-                    <strong>Recent changes could not be loaded right now.</strong><br>
-                    <span class="date">GitHub API rate limit may have been reached.</span>
-                </div>
-            `;
+          commitsBox.replaceChildren();
+          renderCommit(
+            "Recent changes could not be loaded right now.",
+            "GitHub API rate limit may have been reached.",
+          );
         });
-</script>
-
-</body>
+    </script>
+  </body>
 </html>
