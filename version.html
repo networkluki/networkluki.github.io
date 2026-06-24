@@ -4,10 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="default-src 'self'; base-uri 'self'; form-action 'none'; frame-ancestors 'none'; object-src 'none'; img-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src https://api.github.com; upgrade-insecure-requests"
-    />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; form-action 'none'; frame-ancestors 'none'; object-src 'none'; img-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src https://api.github.com; upgrade-insecure-requests"/>
 
     <title>Version Information</title>
     <style>
@@ -84,8 +81,7 @@
       </section>
     </main>
 
-    <h2>Recent Commits</h2> <div id="commits"> <p class="loading">Loading commits...</p> </div> <script> const commitsBox = document.getElementById("commits"); fetch("https://api.github.com/repos/theinfobots/networkluki.github.io/commits?sha=main&per_page=15") .then(response => { if (!response.ok) { throw new Error("GitHub API request failed"); } return response.json(); }) .then(commits => { commitsBox.innerHTML = ""; commits.forEach(commit => { const message = commit.commit.message; const author = commit.commit.author.name; const date = new Date( commit.commit.author.date ).toLocaleDateString("sv-SE"); const sha = commit.sha.substring(0, 7); const url = commit.html_url; commitsBox.innerHTML += ` <div class="commit"> <div class="commit-info"> <a class="commit-title" href="${url}" target="_blank"> ${message} </a> <div class="commit-meta"> ${author} authored on ${date} </div> </div> <div class="sha"> ${sha} </div> </div> `; }); }) .catch(error => { commitsBox.innerHTML = ` <p class="error"> Could not load commits. </p> `; console.error(error); }); </script>
-    
+
 
     <footer>
       <p>Maintained by Luki Hackwell</p>
