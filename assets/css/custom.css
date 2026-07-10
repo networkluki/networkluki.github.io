@@ -1,3 +1,9 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   color: #fff;
@@ -6,15 +12,63 @@ body {
 }
 
 span.alias {
-  letter-spacing: 0.3rem;
-  margin-right: -0.3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15em;
+  letter-spacing: clamp(0.04rem, 0.8vw, 0.22rem);
+  line-height: 1.25;
 }
 
 .workspace {
-  margin: 0;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 52rem;
   min-height: 100vh;
+  min-height: 100svh;
+  min-height: 100dvh;
+  padding: max(1.25rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-right)) max(1.25rem, env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left));
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: clamp(0.75rem, 3vh, 1.5rem);
+  text-align: center;
+  font-size: clamp(1rem, 4.4vw, 1.8rem);
+  line-height: 1.4;
+}
+
+.workspace > * {
+  max-width: 100%;
+  margin-block: 0;
+}
+
+.workspace a {
+  overflow-wrap: anywhere;
+}
+
+.title {
+  font-size: clamp(1.35rem, 6.4vw, 2.35rem);
+  line-height: 1.2;
+}
+
+.subtitle {
+  font-size: clamp(1rem, 4.6vw, 1.8rem);
+}
+
+footer {
+  font-size: clamp(0.9rem, 4vw, 1.4rem);
+}
+
+@media (min-width: 560px) {
+  span.alias {
+    flex-direction: row;
+    gap: 0.75em;
+  }
+}
+
+@media (max-width: 360px) {
+  .title {
+    font-size: clamp(1.25rem, 6vw, 1.45rem);
+  }
 }
