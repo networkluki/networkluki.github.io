@@ -5,16 +5,42 @@ body {
   background-color: #2c001e;
 }
 
+body,
+.workspace {
+  box-sizing: border-box;
+}
+
 span.alias {
-  letter-spacing: 0.3rem;
-  margin-right: -0.3rem;
+  letter-spacing: clamp(0.08rem, 1vw, 0.3rem);
+  margin-right: calc(-1 * clamp(0.08rem, 1vw, 0.3rem));
 }
 
 .workspace {
-  margin: 0;
+  margin: 0 auto;
+  width: min(100%, 52rem);
   min-height: 100vh;
+  min-height: 100dvh;
+  padding: max(1rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-right)) max(1rem, env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left));
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 1rem;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.workspace > * {
+  max-width: 100%;
+  margin-block: 0;
+}
+
+.title {
+  font-size: clamp(1.5rem, 8vw, 2.5rem);
+}
+
+.subtitle,
+.workspace p,
+.alias {
+  font-size: clamp(1rem, 6vw, 2rem);
 }
