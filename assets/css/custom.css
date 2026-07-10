@@ -1,3 +1,9 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   color: #fff;
@@ -11,22 +17,37 @@ body,
 }
 
 span.alias {
-  letter-spacing: clamp(0.08rem, 1vw, 0.3rem);
-  margin-right: calc(-1 * clamp(0.08rem, 1vw, 0.3rem));
+  display: block;
+  max-width: 22ch;
+  letter-spacing: clamp(0.04rem, 0.8vw, 0.3rem);
+  line-height: 1.35;
 }
 
 .workspace {
   margin: 0 auto;
-  width: min(100%, 52rem);
+  width: 100%;
+  max-width: 52rem;
+
   min-height: 100vh;
+  min-height: 100svh;
   min-height: 100dvh;
-  padding: max(1rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-right)) max(1rem, env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left));
+
+  padding:
+    max(1.25rem, env(safe-area-inset-top))
+    max(clamp(1rem, 6vw, 2rem), env(safe-area-inset-right))
+    max(1.25rem, env(safe-area-inset-bottom))
+    max(clamp(1rem, 6vw, 2rem), env(safe-area-inset-left));
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+
+  gap: clamp(0.75rem, 3vh, 1.5rem);
   text-align: center;
+
+  font-size: clamp(1rem, 4.8vw, 2rem);
+  line-height: 1.4;
   overflow-wrap: anywhere;
 }
 
@@ -35,12 +56,29 @@ span.alias {
   margin-block: 0;
 }
 
-.title {
-  font-size: clamp(1.5rem, 8vw, 2.5rem);
+.workspace a {
+  overflow-wrap: anywhere;
 }
 
-.subtitle,
-.workspace p,
-.alias {
-  font-size: clamp(1rem, 6vw, 2rem);
+.title {
+  font-size: clamp(1.45rem, 7vw, 2.5rem);
+  line-height: 1.2;
+}
+
+.subtitle {
+  font-size: clamp(1.1rem, 5vw, 2rem);
+}
+
+footer {
+  font-size: clamp(0.95rem, 4.2vw, 1.6rem);
+}
+
+@media (max-width: 360px) {
+  span.alias {
+    max-width: 18ch;
+  }
+
+  .title {
+    font-size: clamp(1.35rem, 7vw, 1.6rem);
+  }
 }
