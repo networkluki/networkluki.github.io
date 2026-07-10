@@ -11,6 +11,11 @@ body {
   background-color: #2c001e;
 }
 
+body,
+.workspace {
+  box-sizing: border-box;
+}
+
 span.alias {
   display: block;
   max-width: 22ch;
@@ -22,18 +27,28 @@ span.alias {
   margin: 0 auto;
   width: 100%;
   max-width: 52rem;
+
   min-height: 100vh;
   min-height: 100svh;
   min-height: 100dvh;
-  padding: max(1.25rem, env(safe-area-inset-top)) max(clamp(1rem, 6vw, 2rem), env(safe-area-inset-right)) max(1.25rem, env(safe-area-inset-bottom)) max(clamp(1rem, 6vw, 2rem), env(safe-area-inset-left));
+
+  padding:
+    max(1.25rem, env(safe-area-inset-top))
+    max(clamp(1rem, 6vw, 2rem), env(safe-area-inset-right))
+    max(1.25rem, env(safe-area-inset-bottom))
+    max(clamp(1rem, 6vw, 2rem), env(safe-area-inset-left));
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   gap: clamp(0.75rem, 3vh, 1.5rem);
   text-align: center;
+
   font-size: clamp(1rem, 4.8vw, 2rem);
   line-height: 1.4;
+  overflow-wrap: anywhere;
 }
 
 .workspace > * {
