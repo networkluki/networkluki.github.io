@@ -2,5 +2,9 @@
 <site>
   <alias>networkluki</alias>
   <name>Luki Hackwell</name>
+  <title>DevOps • Systems • Security • Software • Network</title>
   <description>I build stuff</description>
+  <contact>dev.networkluki@gmail.com</contact>
+  <language>en</language>
+  <country>SE</country>
 </site>
