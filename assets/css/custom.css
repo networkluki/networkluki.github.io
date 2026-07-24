@@ -61,6 +61,7 @@ span.alias {
 }
 
 @media (max-width: 30rem) {
+  
   .profile {
     flex-direction: column;
     align-items: center;
@@ -69,4 +70,5 @@ span.alias {
   .profile__links {
     justify-content: center;
   }
+  
 }
