@@ -22,7 +22,7 @@ span.alias {
 .profile {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: flex-start;
   gap: 1.5rem;
   width: min(100%, 42rem);
   padding: 0 1rem;
@@ -44,12 +44,12 @@ span.alias {
   min-width: 0;
 }
 
-.profile__body > * {
-  margin: 0 0 0.6rem;
+.profile__body .alias {
+  display: block;
 }
 
-.profile__body > :last-child {
-  margin-bottom: 0;
+.profile__body .clock-bar p {
+  margin: 0;
 }
 
 .profile__links {
