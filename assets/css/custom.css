@@ -22,9 +22,9 @@ span.alias {
 .profile {
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-start;
-  gap: 1.5rem;
-  width: min(100%, 42rem);
+  align-items: center;
+  gap: 2rem;
+  width: min(100%, 48rem);
   padding: 0 1rem;
   box-sizing: border-box;
   text-align: left;
@@ -33,15 +33,19 @@ span.alias {
 .profile__avatar {
   display: block;
   flex: 0 0 auto;
-  width: 8rem;
-  height: 8rem;
+  width: 12rem;
+  height: 12rem;
   border-radius: 12px;
   object-fit: cover;
 }
 
 .profile__body {
-  flex: 1 1 16rem;
+  flex: 1 1 18rem;
   min-width: 0;
+}
+
+.profile__body > * {
+  margin: 0.35rem 0;
 }
 
 .profile__body .alias {
@@ -60,8 +64,7 @@ span.alias {
   gap: 0.25rem 1rem;
 }
 
-@media (max-width: 30rem) {
-  
+@media (max-width: 32rem) {
   .profile {
     flex-direction: column;
     align-items: center;
@@ -70,5 +73,4 @@ span.alias {
   .profile__links {
     justify-content: center;
   }
-  
 }
