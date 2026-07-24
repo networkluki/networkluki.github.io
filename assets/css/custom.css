@@ -18,3 +18,55 @@ span.alias {
   justify-content: center;
   align-items: center;
 }
+
+.profile {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem;
+  width: min(100%, 42rem);
+  padding: 0 1rem;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.profile__avatar {
+  display: block;
+  flex: 0 0 auto;
+  width: 8rem;
+  height: 8rem;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.profile__body {
+  flex: 1 1 16rem;
+  min-width: 0;
+}
+
+.profile__body > * {
+  margin: 0 0 0.6rem;
+}
+
+.profile__body > :last-child {
+  margin-bottom: 0;
+}
+
+.profile__links {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+}
+
+@media (max-width: 30rem) {
+  .profile {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .profile__links {
+    justify-content: center;
+  }
+}
