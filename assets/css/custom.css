@@ -97,6 +97,13 @@ p a{color:#fff}
 .top p{font-size:17px;line-height:27px;margin:0 auto;max-width:540px;text-align:center}
 .top a{color:var(--top-text)}
 .hero-tagline{font-size:12px;font-weight:300;letter-spacing:1.5px;text-transform:uppercase;opacity:.7;margin:20px 0}
+/* Clock/greeting bar above the avatar */
+.clock-bar{font-family:'SFMono-Regular',Menlo,Consolas,'Liberation Mono','Courier New',monospace;font-size:12px;line-height:1.5;opacity:.6;margin-bottom:22px}
+.clock-bar #clock-greeting{font-weight:600;opacity:.85}
+/* Hero quick links (Portfolio / Projects / Blog) */
+.hero-links{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 22px;margin:0 0 18px}
+.hero-links a{color:var(--top-text);text-decoration:none;font-size:13px;letter-spacing:.5px;opacity:.85;border-bottom:1px solid transparent;padding-bottom:2px;transition:opacity .15s ease,border-color .15s ease}
+.hero-links a:hover{opacity:1;border-bottom-color:currentColor}
 .contact-info{font-size:28px;text-align:center;margin-top:26px}
 .contact-info .item{display:inline-block}
 .contact-info .item a{display:inline-block;padding:0 12px;transition:transform .15s ease,opacity .15s ease}
@@ -150,6 +157,15 @@ footer{
 }
 @media (max-width:599px){
 	.footer-left{margin-top:12px}
+}
+/* Footer right: years-left counter (filled by age.js #years-left) */
+.footer-right{color:#6a6f78;font-size:11px;letter-spacing:.3px}
+.footer-right #years-left{color:#c7ccd3;font-weight:600}
+@media (min-width:600px){
+	.footer-right{position:absolute;right:16px;bottom:22px}
+}
+@media (max-width:599px){
+	.footer-right{margin-top:4px}
 }
 .footer-version{
 	color:#fff;
