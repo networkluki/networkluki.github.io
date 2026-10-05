@@ -31,16 +31,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const birthDate = "1997-02-13";
     const maxAge = 100;
 
-    const ageElement = document.getElementById("age");
-    const yearsLeftElement = document.getElementById("years-left");
+    const age = calculateAge(birthDate);
 
-    if (!ageElement || !yearsLeftElement) {
-        return;
+    // Fill whichever elements are present; neither is required.
+    const ageElement = document.getElementById("age");
+    if (ageElement) {
+        ageElement.textContent = String(age);
     }
 
-    const age = calculateAge(birthDate);
-    const yearsLeft = calculateYearsLeft(age, maxAge);
-
-    ageElement.textContent = String(age);
-    yearsLeftElement.textContent = String(yearsLeft);
+    const yearsLeftElement = document.getElementById("years-left");
+    if (yearsLeftElement) {
+        yearsLeftElement.textContent = String(calculateYearsLeft(age, maxAge));
+    }
 });
