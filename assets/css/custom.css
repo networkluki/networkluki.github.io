@@ -1,76 +1,250 @@
-body {
-  margin: 0;
-  color: #fff;
-  font-family: monospace, sans-serif;
-  background-color: #2c001e;
+a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,
+canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,
+fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,
+html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,
+output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,
+summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,
+video{
+margin:0;
+padding:0;
+border:0;
+font:inherit;
+vertical-align:baseline
 }
 
-span.alias {
-  letter-spacing: 0.3rem;
-  margin-right: -0.3rem;
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section{
+display:block
+
+}
+body{line-height:1}
+ol,ul{list-style:none}
+blockquote,q{quotes:none}
+blockquote:after,blockquote:before,q:after,q:before{content:'';content:none}
+table{border-collapse:collapse;border-spacing:0}
+:root{
+	--page-bg:#ffffff;
+	--text:#555;
+	--top-bg:#26292E;
+	--top-text:#fff;
+	--border:#eee;
+	--footer-bg:#eee;
+	--footer-text:#999;
+	--hover:#26292E;
+	--hr:#ccc;
+	--switch-track:#e4e4e7;
+	--switch-knob:#ffffff;
+	--switch-sun:#f5a623;
+	--switch-moon:#5b6472;
+}
+:root[data-theme="dark"]{
+	--page-bg:#1b1d21;
+	--text:#c5c8cd;
+	--top-bg:#141619;
+	--top-text:#f5f6f7;
+	--border:#2c2f34;
+	--footer-bg:#141619;
+	--footer-text:#8a8f98;
+	--hover:#6ca0ff;
+	--hr:#33373d;
+	--switch-track:#3a3f46;
+	--switch-knob:#1b1d21;
+	--switch-sun:#8a8f98;
+	--switch-moon:#f5d76e;
+}
+/* Follow the OS preference only when the user has not chosen explicitly */
+@media (prefers-color-scheme: dark){
+	:root:not([data-theme="light"]){
+		--page-bg:#1b1d21;
+		--text:#c5c8cd;
+		--top-bg:#141619;
+		--top-text:#f5f6f7;
+		--border:#2c2f34;
+		--footer-bg:#141619;
+		--footer-text:#8a8f98;
+		--hover:#6ca0ff;
+		--hr:#33373d;
+		--switch-track:#3a3f46;
+		--switch-knob:#1b1d21;
+		--switch-sun:#8a8f98;
+		--switch-moon:#f5d76e;
+	}
+}
+html,body{background:var(--page-bg)}
+body{font-family:'Open Sans',sans-serif;color:var(--text);transition:background-color .3s ease,color .3s ease}
+h1{font-weight:200;text-align:center;font-size:35px;margin-bottom:40px}
+h2{text-align:center;font-size:24px;margin-bottom:60px}
+h3{font-size:26px;padding-bottom:5px;text-align:center}
+a{text-decoration:underline}
+a:focus{outline:0}
+p{font-size:18px;line-height:26px;font-weight:100}
+p a{color:#fff}
+.profile-image{margin:0 auto 26px;width:190px;height:190px}
+.profile-image img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 20%;border-radius:50%;border:5px solid white;box-sizing:border-box;box-shadow:0 6px 20px rgba(0,0,0,.35);}
+.top{/*background: #cf4646;*/ background: var(--top-bg); color:var(--top-text); padding:72px 0 64px; text-align:center; transition:background-color .3s ease,color .3s ease; }
+/* Hero vertical rhythm — balanced, symmetric spacing */
+.top h1{margin-bottom:20px;line-height:1.15}
+.top h1 small{display:block;margin-top:12px;font-size:15px;font-weight:300;letter-spacing:.3px;opacity:.85}
+.top p{font-size:17px;line-height:27px;margin:0 auto;max-width:540px;text-align:center}
+.top a{color:var(--top-text)}
+.hero-tagline{font-size:12px;font-weight:300;letter-spacing:1.5px;text-transform:uppercase;opacity:.7;margin:20px 0}
+.contact-info{font-size:28px;text-align:center;margin-top:26px}
+.contact-info .item{display:inline-block}
+.contact-info .item a{display:inline-block;padding:0 12px;transition:transform .15s ease,opacity .15s ease}
+.contact-info .item a:hover{transform:translateY(-2px);opacity:.75}
+.top hr{width:70px;margin:26px auto;border-top-color:rgba(255,255,255,.25)}
+.contact-info .item a .x-icon{width:.9em;height:.9em;vertical-align:-0.12em;color:inherit}
+.main-content{padding:56px 0}
+.main-content a{color:var(--text);text-decoration:none}
+/* Section title with a short centered divider (matches the hero) */
+.main-content > .container > h3{position:relative;margin-bottom:40px;padding-bottom:16px;font-size:22px;font-weight:300;letter-spacing:.4px;opacity:.85}
+.main-content > .container > h3::after{content:"";position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:70px;height:2px;border-radius:2px;background:var(--hover);opacity:.6}
+/* Avoid doubled vertical spacing between two stacked sections */
+.main-content + .main-content{padding-top:0}
+/* About me — soft, airy, centered */
+.about-section{max-width:620px;margin:0 auto;text-align:center}
+.about-section p{font-size:15px;line-height:26px;font-weight:300;opacity:.75;margin:0 0 16px}
+.about-section p:last-child{margin-bottom:0}
+.about-section strong{font-weight:500;opacity:1}
+.image{text-align:center;margin-bottom:60px}
+.image img{max-width:100%}
+.content-section{margin-bottom:0;text-align:center}
+.content-section .row{margin-bottom:0}
+/* Each technology: soft, airy and minimalist */
+.content-section .col-md-6{margin-bottom:42px}
+.content-section .col-md-6 > div{padding:0 12px;transition:color .15s ease}
+.content-section h3{font-size:15px;font-weight:300;letter-spacing:.4px;margin-bottom:6px;padding-bottom:0;opacity:.9}
+.content-section p{font-size:12.5px;line-height:19px;font-weight:300;opacity:.55;margin:0}
+.content-section .col-md-6 > div:hover h3{color:var(--hover);opacity:1}
+/* Reset the old divider lines from the previous layout */
+.content-section .row>div:first-child{border-right:0}
+.bx-item{font-family:KievitWeb,Arial;font-size:40px;font-weight:700}
+/* Terminal / status-bar style footer — always dark for the console feel */
+footer{
+	background:#15171a;
+	color:#c5c8cd;
+	text-align:center;
+	padding:22px 16px;
+	position:relative;
+	font-family:'SFMono-Regular',Menlo,Consolas,'Liberation Mono','Courier New',monospace;
+}
+.footer-left #latest-diff{
+	color:#6a6f78;
+	font-size:11px;
+	letter-spacing:.3px;
+	text-decoration:none;
+}
+.footer-left #latest-diff:hover{color:#c7ccd3;text-decoration:underline}
+/* Desktop: pin the commit link to the bottom-left; mobile: stacked and centered */
+@media (min-width:600px){
+	.footer-left{position:absolute;left:16px;bottom:22px}
+}
+@media (max-width:599px){
+	.footer-left{margin-top:12px}
+}
+.footer-version{
+	color:#fff;
+	font-weight:600;
+	font-size:14px;
+	letter-spacing:.5px;
+	margin-bottom:6px;
+}
+.footer-status{
+	display:flex;
+	flex-wrap:wrap;
+	justify-content:center;
+	gap:4px 16px;
+	font-size:12px;
+	color:#c7ccd3;
+	margin-bottom:10px;
+}
+.footer-status strong{font-weight:700}
+.footer-status .high strong{color:#ff5f56;}   /* red */
+.footer-status .medium strong{color:#ffbd2e;} /* yellow / orange */
+.footer-status .low strong{color:#27c93f;}    /* green */
+.footer-copyright{
+	font-size:11px;
+	color:#6a6f78;
+	letter-spacing:.3px;
 }
 
-.workspace {
-  margin: 0;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.text-inverse{
+	color: #FFF;
 }
 
-.profile {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 2rem;
-  width: min(100%, 48rem);
-  padding: 0 1rem;
-  box-sizing: border-box;
-  text-align: left;
+hr {
+width: auto;
+display: block;
+height: 1px;
+border: 0;
+border-top: 1px solid var(--hr);
+margin: 1em 0;
+padding: 0;
 }
 
-.profile__avatar {
-  display: block;
-  flex: 0 0 auto;
-  width: 12rem;
-  height: 12rem;
-  border-radius: 12px;
-  object-fit: cover;
+/* ===== iOS-style theme switch ===== */
+.theme-switch{
+	position:fixed;
+	top:16px;
+	right:16px;
+	z-index:1000;
 }
-
-.profile__body {
-  flex: 1 1 18rem;
-  min-width: 0;
+.theme-switch__btn{
+	-webkit-appearance:none;
+	appearance:none;
+	position:relative;
+	display:inline-flex;
+	align-items:center;
+	width:66px;
+	height:34px;
+	padding:0;
+	border:none;
+	border-radius:999px;
+	background:var(--switch-track);
+	cursor:pointer;
+	box-shadow:inset 0 0 0 1px rgba(0,0,0,.08), 0 1px 3px rgba(0,0,0,.25);
+	transition:background-color .3s ease;
+	touch-action:none; /* lets the knob be dragged without the page scrolling */
 }
-
-.profile__body > * {
-  margin: 0.35rem 0;
+.theme-switch__btn:focus-visible{
+	outline:2px solid var(--hover);
+	outline-offset:3px;
 }
-
-.profile__body .alias {
-  display: block;
+.theme-switch__icon{
+	position:absolute;
+	top:50%;
+	transform:translateY(-50%);
+	font-size:14px;
+	line-height:1;
+	pointer-events:none;
 }
-
-.profile__body .clock-bar p {
-  margin: 0;
+.theme-switch__icon--sun{ left:9px; color:var(--switch-sun); }
+.theme-switch__icon--moon{ right:9px; color:var(--switch-moon); }
+.theme-switch__knob{
+	position:absolute;
+	top:3px;
+	left:3px;
+	width:28px;
+	height:28px;
+	border-radius:50%;
+	background:var(--switch-knob);
+	box-shadow:0 2px 4px rgba(0,0,0,.35);
+	transition:transform .25s cubic-bezier(.4,.1,.3,1);
+	pointer-events:none;
 }
-
-.profile__links {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.25rem 1rem;
+/* Knob slides right in dark mode (explicit choice or OS preference) */
+:root[data-theme="dark"] .theme-switch__knob{ transform:translateX(32px); }
+@media (prefers-color-scheme: dark){
+	:root:not([data-theme="light"]) .theme-switch__knob{ transform:translateX(32px); }
 }
-
-@media (max-width: 32rem) {
-  .profile {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  .profile__links {
-    justify-content: center;
-  }
-}
+/* While dragging, JS sets the knob position directly and disables the easing */
+.theme-switch__btn.is-dragging .theme-switch__knob{ transition:none; }

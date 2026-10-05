@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+<head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow" />
     <meta name="author" content="Luki Hackwell" />
@@ -9,7 +9,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 
     <meta name="referrer" content="strict-origin-when-cross-origin" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; form-action 'none'; frame-ancestors 'none'; object-src 'none'; img-src 'self'; style-src 'self'; script-src 'self'; manifest-src 'self'; upgrade-insecure-requests" />
 
     <meta name="google-site-verification" content="qnfre-GQCobr1-xlZUruR9sxvqFGn506LblaS923Awo" />
     <title>Luki Hackwell - networkluki</title>
@@ -18,69 +17,218 @@
     <link rel="canonical" href="https://lukihackwell.com/" />
     <link rel="alternate" type="application/xml" title="networkluki profile" href="/site.xml" />
 
-<!-- Apple touch icons -->
-<link rel="apple-touch-icon" sizes="57x57" href="/assets/imgs/icons/apple-icon-57x57.png" />
-<link rel="apple-touch-icon" sizes="60x60" href="/assets/imgs/icons/apple-icon-60x60.png" />
-<link rel="apple-touch-icon" sizes="72x72" href="/assets/imgs/icons/apple-icon-72x72.png" />
-<link rel="apple-touch-icon" sizes="76x76" href="/assets/imgs/icons/apple-icon-76x76.png" />
-<link rel="apple-touch-icon" sizes="114x114" href="/assets/imgs/icons/apple-icon-114x114.png" />
-<link rel="apple-touch-icon" sizes="120x120" href="/assets/imgs/icons/apple-icon-120x120.png" />
-<link rel="apple-touch-icon" sizes="144x144" href="/assets/imgs/icons/apple-icon-144x144.png" />
-<link rel="apple-touch-icon" sizes="152x152" href="/assets/imgs/icons/apple-icon-152x152.png" />
-<link rel="apple-touch-icon" sizes="180x180" href="/assets/imgs/icons/apple-icon-180x180.png" />
-
-<!-- PNG favicons -->
-<link rel="icon" type="image/png" sizes="192x192" href="/assets/imgs/icons/android-icon-192x192.png" />
-<link rel="icon" type="image/png" sizes="32x32" href="/assets/imgs/icons/favicon-32x32.png" />
-<link rel="icon" type="image/png" sizes="96x96" href="/assets/imgs/icons/favicon-96x96.png" />
-<link rel="icon" type="image/png" sizes="16x16" href="/assets/imgs/icons/favicon-16x16.png" />
-
-<!-- ICO favicons -->
-<link rel="shortcut icon" href="/assets/imgs/icons/favicon.ico" type="image/x-icon" />
-<link rel="icon" href="/assets/imgs/icons/favicon.ico" type="image/x-icon" />
-
-<!-- Web app manifest -->
-<link rel="manifest" href="/assets/imgs/icons/manifest.json" />
-
-<!-- Browser / Windows theme colors -->
-<meta name="msapplication-TileColor" content="#2c001e" />
-<meta name="msapplication-TileImage" content="/assets/imgs/icons/ms-icon-144x144.png" />
-<meta name="theme-color" content="#2c001e" />
-
-    <script src="/assets/js/typers.js" defer></script>
+    <!-- Stylesheets (Bootstrap + Font Awesome via CDN) -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="/assets/css/custom.css" />
-    
-  </head>
-  <body>
-    <div class="workspace">
-      <section class="profile">
-        <img class="profile__avatar" src="/assets/imgs/ghpro.png" alt="Luki Hackwell" width="599" height="607" decoding="async"/>
-        <div class="profile__body">
-          <div class="clock-bar">
-            <p>
-              <span id="clock-greeting"></span><br><span id="clock-time"></span>
-            </p>
-          </div>
-          <span class="alias"><span>networkluki</span>,<br> <span id="years-left"></span> Years left</span>
-          <p>What I build with: <span id="typing-text"></span></p>
-          <h3 class="title">Luki Hackwell, <span id="age"></span> y/o</h3>
-          <p class="subtitle">I build stuff</p>
-          <p>Mail: <a href="mailto:dev.networkluki@gmail.com">dev.networkluki@gmail.com</a></p>
-          <ul class="profile__links">
-            <!--<li><a href="https://networkluki.com/">Workstation</a></li>-->
-          </ul>
-        </div>
-      </section>
-      <footer>
-        <p>
-          <a id="latest-diff" href="https://github.com/networkluki/networkluki.github.io/commit/19fc75ef7177922fb69276d641d5cef3fbcc4afe" target="_blank" rel="noopener noreferrer">
-            version#19fc75e
-          </a>
-        </p>
-      </footer>
+
+    <!-- Theme applied before first paint (avoids a flash of the wrong theme) -->
+    <script src="/assets/js/theme-init.js"></script>
+
+    <!-- Apple touch icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/assets/imgs/icons/apple-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="60x60" href="/assets/imgs/icons/apple-icon-60x60.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="/assets/imgs/icons/apple-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="/assets/imgs/icons/apple-icon-76x76.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="/assets/imgs/icons/apple-icon-114x114.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="/assets/imgs/icons/apple-icon-120x120.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="/assets/imgs/icons/apple-icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="/assets/imgs/icons/apple-icon-152x152.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/imgs/icons/apple-icon-180x180.png" />
+
+    <!-- PNG favicons -->
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/imgs/icons/android-icon-192x192.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/imgs/icons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/assets/imgs/icons/favicon-96x96.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/imgs/icons/favicon-16x16.png" />
+
+    <!-- ICO favicons -->
+    <link rel="shortcut icon" href="/assets/imgs/icons/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/assets/imgs/icons/favicon.ico" type="image/x-icon" />
+
+    <!-- Web app manifest -->
+    <link rel="manifest" href="/assets/imgs/icons/manifest.json" />
+
+    <!-- Browser / Windows theme colors -->
+    <meta name="msapplication-TileColor" content="#2c001e" />
+    <meta name="msapplication-TileImage" content="/assets/imgs/icons/ms-icon-144x144.png" />
+    <meta name="theme-color" content="#2c001e" />
+</head>
+<body>
+  <div class="theme-switch">
+    <button type="button" id="themeSwitch" class="theme-switch__btn"
+            role="switch" aria-checked="false" aria-label="Växla mellan ljust och mörkt tema">
+      <i class="fa fa-sun-o theme-switch__icon theme-switch__icon--sun" aria-hidden="true"></i>
+      <i class="fa fa-moon-o theme-switch__icon theme-switch__icon--moon" aria-hidden="true"></i>
+      <span class="theme-switch__knob"></span>
+    </button>
+  </div>
+
+  <div class="top">
+    <div class="container">
+      <div class="profile-image">
+        <img src="/assets/imgs/ghpro.png">
+      </div>
+
+      <h1>Luki Hackwell<small>@networkluki — Developer • DevOps • Security</small></h1>
+
+      <p>
+	Self-taught developer working with Linux, backend systems, automation, infrastructure and defensive security.
+	  </p>
+      <div class="hero-tagline">Building • Breaking • Hardening • Automating</div>
+      <hr>
+      <div class="contact-info">
+        <span class="item">
+          <a href="mailto:dev.networkluki@gmail.com"><i class="fa fa-envelope-o"></i></a>
+        </span>
+
+        <span class="item">
+          <a href="https://github.com/networkluki" target="_blank" rel="noopener noreferrer"><i class="fa fa-github"></i></a>
+        </span>
+
+        <span class="item">
+          <a href="https://x.com/networkluki" target="_blank" rel="noopener noreferrer" aria-label="X"><svg class="x-icon" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg></a>
+        </span>
+
+		<span class="item">
+		<a href="https://www.reddit.com/user/networkluki" target="_blank" rel="noopener noreferrer"><i class="fa fa-reddit"></i></a>
+		</span>
+      </div>
     </div>
-    
-<script src="/assets/js/age.js" defer></script>
-<script src="/assets/js/time.js" defer></script>
+  </div>
+
+  <div class="main-content">
+    <div class="container">
+      <h3>About me — Who is me?</h3>
+      <div class="about-section">
+        <p>I'm Luki Hackwell (<strong>@networkluki</strong>) — a self-taught developer focused on Linux, backend systems, automation and defensive security. I like building reliable, well-structured systems and understanding how things work under the hood, from the shell to the server.</p>
+        <p>Most of my time goes into infrastructure, scripting and hardening: writing clean, maintainable code and keeping production environments stable, observable and secure.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <div class="container">
+      <h3>How it started</h3>
+      <div class="about-section">
+        <p>It all started when I watched a documentary about programming many years ago; I became hooked on that world and began learning web development and much more. Now that AI has arrived, I am deeply involved in vibe coding—leveraging my existing knowledge, which becomes far more powerful when combined with AI. You can think of it this way: your knowledge + your experience + AI's speed = significantly greater capacity.</p>
+        <p>Humans steer. AI accelerates. Humans verify.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <div class="container">
+	<h3>What I primarily work with</h3>
+
+      <div class="content-section">
+
+        <div class="row">
+  <div class="col-md-6">
+    <div>
+      <h3>HTML/CSS</h3>
+      <p>Frontend structure and responsive web design.</p>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div>
+      <h3>JavaScript</h3>
+      <p>Client-side scripting and interactive web applications.</p>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <div>
+      <h3>Bash/PowerShell</h3>
+      <p>Linux automation, system administration and scripting.</p>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div>
+      <h3>Python</h3>
+      <p>Automation, backend development and security tooling.</p>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <div>
+      <h3>PHP</h3>
+      <p>Backend development and server-side web applications.</p>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div>
+      <h3>Go</h3>
+      <p>Backend services, APIs and command-line tools.</p>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <div>
+      <h3>Linux/Windows</h3>
+      <p>Server administration, hardening and infrastructure.</p>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div>
+      <h3>Docker</h3>
+      <p>Containerized services and application deployment.</p>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <div>
+      <h3>Apache/Nginx</h3>
+      <p>Web server configuration, hosting and security.</p>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div>
+      <h3>Security/Network</h3>
+      <p>Web security, hardening, WAF and log analysis.</p>
+    </div>
+  </div>
+</div>
+
+      </div>
+
+    </div>
+  </div>
+
+<footer>
+  <div class="footer-version">v1.0.1</div>
+
+  <div class="footer-status">
+    <span class="high"><strong>1</strong> high</span>
+    <span class="medium"><strong>0</strong> medium</span>
+    <span class="low"><strong>0</strong> low</span>
+  </div>
+
+  <div class="footer-copyright">
+    &copy; <span id="current-year"></span> networkluki.com
+  </div>
+
+  <div class="footer-left">
+    <a id="latest-diff" href="https://github.com/networkluki/networkluki.github.io/commit/19fc75ef7177922fb69276d641d5cef3fbcc4afe" target="_blank" rel="noopener noreferrer">version#19fc75e</a>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="/assets/js/year.js"></script>
+<script src="/assets/js/theme-switch.js"></script>
+<script src="/assets/js/latest-commit.js"></script>
 </body>
 </html>
