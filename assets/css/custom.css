@@ -248,3 +248,21 @@ padding: 0;
 }
 /* While dragging, JS sets the knob position directly and disables the easing */
 .theme-switch__btn.is-dragging .theme-switch__knob{ transition:none; }
+
+/* ===== Small phones: tighten the hero and sections ===== */
+@media (max-width:480px){
+	.top{padding:56px 0 46px}
+	h1{font-size:28px}
+	.top p{font-size:16px;line-height:25px}
+	.profile-image{width:150px;height:150px;margin-bottom:22px}
+	.hero-tagline{font-size:11px;letter-spacing:1px;margin:16px 0}
+	.contact-info{font-size:26px}
+	.contact-info .item a{padding:0 10px}
+	.main-content{padding:40px 0}
+	.main-content > .container > h3{font-size:20px;margin-bottom:30px}
+	.content-section .col-md-6{margin-bottom:34px}
+}
+/* Keep the fixed theme switch clear of the very top-right corner on small screens */
+@media (max-width:360px){
+	.theme-switch{top:12px;right:12px}
+}
