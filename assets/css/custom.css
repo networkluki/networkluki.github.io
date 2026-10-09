@@ -80,7 +80,7 @@ table{border-collapse:collapse;border-spacing:0}
 	}
 }
 html,body{background:var(--page-bg)}
-body{font-family:'Open Sans',sans-serif;color:var(--text);transition:background-color .3s ease,color .3s ease}
+body{font-family:'Open Sans',sans-serif;color:var(--text);min-height:100vh;display:flex;flex-direction:column;transition:background-color .3s ease,color .3s ease}
 h1{font-weight:200;text-align:center;font-size:35px;margin-bottom:40px}
 h2{text-align:center;font-size:24px;margin-bottom:60px}
 h3{font-size:26px;padding-bottom:5px;text-align:center}
@@ -144,6 +144,7 @@ footer{
 	text-align:center;
 	padding:22px 16px;
 	position:relative;
+	margin-top:auto;
 	font-family:'SFMono-Regular',Menlo,Consolas,'Liberation Mono','Courier New',monospace;
 }
 .footer-left #latest-diff{
